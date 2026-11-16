@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c35">
+  <meta name="description" content="الموسوعة الشاملة للجودة وسلامة الأغذية في مطاعم بروستو">
+  <title>موسوعة بروستو للجودة وسلامة الغذاء</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="الرئيسية">
+        <span class="brand-mark">P</span>
+        <span><strong>بروستو</strong><small>الجودة وسلامة الغذاء</small></span>
+      </a>
+
+      <div class="sidebar-label">القائمة الرئيسية</div>
+      <nav class="nav-list" aria-label="التنقل الرئيسي">
+        <button class="nav-item active" data-view="dashboard"><span>⌂</span> لوحة القيادة</button>
+        <button class="nav-item" data-view="branches"><span>⌖</span> الفروع والمشغل</button>
+        <button class="nav-item" data-view="sops"><span>▤</span> الأدلة والإجراءات</button>
+        <button class="nav-item" data-view="forms"><span>☷</span> النماذج والسجلات</button>
+        <button class="nav-item" data-view="products"><span>◈</span> الأصناف والتتبع</button>
+      </nav>
+
+      <div class="sidebar-note">
+        <span class="status-dot"></span>
+        <div><strong>نظام الجودة</strong><small>مرجع تشغيلي موحد</small></div>
+      </div>
+      <div class="sidebar-footer">نسخة ساكنة · GitHub Pages</div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button id="menuToggle" class="icon-button mobile-menu" aria-label="فتح القائمة">☰</button>
+        <div class="topbar-title"><span>موسوعة بروستو</span><small id="pageSubtitle">لوحة القيادة</small></div>
+        <div class="topbar-actions">
+          <label class="search-wrap">
+            <span aria-hidden="true">⌕</span>
+            <input id="globalSearch" type="search" placeholder="ابحث في الموسوعة..." aria-label="البحث في الموسوعة">
+            <kbd>/</kbd>
+          </label>
+          <button id="adminButton" class="admin-button">⚙ وضع الإدارة</button>
+        </div>
+      </header>
+
+      <div id="appContent" class="content" aria-live="polite">
+        <div class="loading">جارٍ تحميل بيانات الموسوعة...</div>
+      </div>
+      <footer class="page-footer">موسوعة بروستو للجودة وسلامة الأغذية · راجع النسخة المعتمدة قبل التطبيق.</footer>
+    </main>
+  </div>
+
+  <div id="adminModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+    <div class="modal-card">
+      <button id="closeAdmin" class="modal-close" aria-label="إغلاق">×</button>
+      <h2 id="adminTitle">تصدير تحديثات البيانات</h2>
+      <p>اختر ملف البيانات، عدّل JSON، ثم نزّل الملف لاستبداله في مجلد <code>data/</code> على GitHub.</p>
+      <label class="field-label" for="dataFileSelect">ملف البيانات</label>
+      <select id="dataFileSelect">
+        <option value="branches">الفروع والمشغل — branches.json</option>
+        <option value="products">الأصناف — products.json</option>
+        <option value="sops">الأدلة والإجراءات — sops.json</option>
+        <option value="forms">النماذج والسجلات — forms.json</option>
+      </select>
+      <textarea id="jsonEditor" spellcheck="false" aria-label="محرر JSON"></textarea>
+      <div id="editorMessage" class="editor-message"></div>
+      <div class="modal-actions">
+        <button id="loadJson" class="button secondary">تحميل الملف</button>
+        <button id="downloadJson" class="button primary">⬇ تنزيل JSON</button>
+      </div>
+      <small class="security-note">وضع الإدارة واجهة تحرير محلية فقط، وليس نظام صلاحيات آمناً.</small>
+    </div>
+  </div>
+</body>
+</html>
